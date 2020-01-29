@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Footer } from './Components/Footer';
+import { Header } from './Components/Header';
+import Dashboard from './Components/Dashboard';
+import ErrorBoundary from './Components/comp-life-cycle/ErrorBoundary';
+import Lifecycle from './Components/comp-life-cycle/LifeCycle';
+import WeatherComponent from './Components/comp-life-cycle/WeatherComponent';
+
+/*stateless functional component*/
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      {/* <Dashboard/> */}
+      <ErrorBoundary>
+        <Lifecycle />
+        <WeatherComponent/>
+      </ErrorBoundary>
+      <Footer/>
     </div>
   );
 }
