@@ -132,27 +132,51 @@
 
 
 
-//React with Redux
+// //React with Redux
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import {Provider} from 'react-redux';
+// // npm install react-redux --save
+
+// import {applyMiddleware,createStore} from 'redux';
+// import allReducers from './reducers';
+// import App from './components/App'
+
+// import logger from 'redux-logger';
+// import { composeWithDevTools } from 
+//            "redux-devtools-extension"; 
+
+// const store=createStore(allReducers,composeWithDevTools(
+//     applyMiddleware(logger)));
+
+// //connect store with provider  with app
+// ReactDOM.render(
+//     <Provider store={store}>
+//         <App />
+//     </Provider>,    
+//     document.getElementById('root')
+// )
+
+
+
+
+
+
+
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-// npm install react-redux --save
+import './index.css';
+import {Provider} from 'react-redux'
+import {store} from './store'
+import App from './App'
 
-import {applyMiddleware,createStore} from 'redux';
-import allReducers from './reducers';
-import App from './components/App'
-
-import logger from 'redux-logger';
-import { composeWithDevTools } from 
-           "redux-devtools-extension"; 
-
-const store=createStore(allReducers,composeWithDevTools(
-    applyMiddleware(logger)));
-
-//connect store with provider  with app
+const app = document.getElementById('root')
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,    
-    document.getElementById('root')
-)
+	<Provider store={store}>
+		<App/>
+	</Provider>
+	, app);
+
+
+
