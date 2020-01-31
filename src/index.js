@@ -164,19 +164,45 @@
 
 
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import {Provider} from 'react-redux'
-import {store} from './store'
-import App from './App'
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
+// import {Provider} from 'react-redux'
+// import {store} from './store'
+// import App from './App'
 
-const app = document.getElementById('root')
+// const app = document.getElementById('root')
+// ReactDOM.render(
+// 	<Provider store={store}>
+// 		<App/>
+// 	</Provider>
+// 	, app);
+
+
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reducer from "./store/reducer";
+
+//npm install redux-saga --save
+
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+
+import createSagaMiddleware from "redux-saga";
+
+import { watchAgeUp } from "./sagas/saga";
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducer, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(watchAgeUp);
+
 ReactDOM.render(
-	<Provider store={store}>
-		<App/>
-	</Provider>
-	, app);
-
-
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
 
